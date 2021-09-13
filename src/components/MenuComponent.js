@@ -1,48 +1,37 @@
 import React, { Component } from "react";
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
+import Dishdetail from './DishdetailComponent';
 
 class Menu extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            selectedDish: null
-            };
-
-        console.log('Menu Component constructor is invoked');
-
+    constructor(props) 
+        {
+         super(props);
+         this.state = { selectedDish: null };
         }
 
-    componentDidMount() {
-        console.log('Menu ComponentDidMount is invoked');
-    }
-    onDishSelect(dish) {
-        this.setState({ selectedDish: dish});
+    componentDidMount() { }
+
+    onDishSelect(dish) 
+        {
+         this.setState({ selectedDish: dish});
         }
 
-    renderDish(dish) {
-        if (dish != null) 
-           {
-            return(
-                <Card>
-                     <CardImg width="100%" src={dish.image} alt={dish.name} />
-                     <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                     </CardBody>
-                </Card>
-            )
-           }
-        else
-           {
+    renderDish(dish) 
+        {
+         if (dish != null) 
+            {
+             return( <Dishdetail dish={dish} /> )
+            }
+         else
+            {
              return (<div></div>)  
-           }
+            }
 
     }
 
     render() {
-        /* el código "this.state.dishes.map((dish)" recorre cada elemento de la lista dishes */
+        
         const menu = this.props.dishes.map((dish) => {
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
@@ -56,7 +45,7 @@ class Menu extends Component {
             );
         }) ;
 
-        console.log('Menu Component render is invoked');
+        // console.log('Menu Component render is invoked');
 
         return(
             <div className="container">
