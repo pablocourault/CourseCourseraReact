@@ -20,7 +20,7 @@ class Dishdetail extends Component {
                     
                         <li key={comment.id}>
                             <div className="row"> {comment.comment} </div>
-                            <div className="row"> --&nbsp;{comment.author} {moment(comment.date).format("MMMM Do YYYY")} </div>
+                            <div className="row"> --&nbsp;{comment.author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date))) } </div>
                             
                         </li>
 
@@ -32,7 +32,7 @@ class Dishdetail extends Component {
                     }
                 }
             )
-            return (<div>
+            return (<div className="container">
                         <div><h4>Comments</h4></div>
                         <div>
                             <ul className="list-unstyled">
