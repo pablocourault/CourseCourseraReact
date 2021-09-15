@@ -1,5 +1,6 @@
 /* the line below is neccesary for an older version of create-react-app */
 import React, { Component } from 'react';
+// import Main from './components/MainComponent';
 import Main from './components/MainComponent';
 import './App.css';
 
