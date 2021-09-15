@@ -1,18 +1,42 @@
 import React, { Component } from "react";
 import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
-import moment from "moment";
 
 class Dishdetail extends Component { 
 
     constructor(props) {
         super(props);
+
+        };
     
-      }
+
+    renderDish(dish) 
+      {
+       if (dish != null) 
+          {
+            return( <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                    <Card>
+                        <CardImg width="100%" src={this.props.dish.image} alt={this.props.dish.name} />
+                    <CardBody>
+                        <CardTitle>{this.props.dish.name}</CardTitle>
+                        <CardText>{this.props.dish.description}</CardText>
+                    </CardBody>
+                    </Card>
+                    </div>
+                    <div className="col-12 col-md-5 m-1">              
+                        { this.renderComments(this.props.dish.comments) }
+                    </div>
+                    </div> )
+          }
+       else
+          {
+           return (<div></div>)  
+          }}
 
     renderComments(comments)
         {
 
-            let list = comments.map((comment) => {
+            const list = comments.map((comment) => {
 
                 if (comment != null) 
                     {
@@ -43,27 +67,26 @@ class Dishdetail extends Component {
         }
         
 
-    render() {
+    render() { 
 
-        return (
+               const dish = this.props.dish;
+               const dishselected = this.renderDish(dish);
+               const dishcomments = this.renderComments(dish.comments);
 
-            <div className="row">
-                <div className="col-12 col-md-5 m-1">
-                    <Card>
-                    <CardImg width="100%" src={this.props.dish.image} alt={this.props.dish.name} />
-                        <CardBody>
-                        <CardTitle>{this.props.dish.name}</CardTitle>
-                        <CardText>{this.props.dish.description}</CardText>
-                    </CardBody>
-                    </Card>
-                </div>
-                <div className="col-12 col-md-5 m-1">              
-                    { this.renderComments(this.props.dish.comments) }
-                </div>
-            </div>
-        );
+               if (dish == null)
+                {
+                    return     
+                        ( 
+                          <div></div>
+                        )
+                }
+                else { 
+                       return ( <div className="row">
+                                {dishselected}
+                                {dishcomments}
+                                </div>)}
+            }
+
     }
-
-}
 
 export default Dishdetail;
