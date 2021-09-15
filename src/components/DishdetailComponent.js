@@ -44,7 +44,7 @@ class Dishdetail extends Component {
                     
                         <li key={comment.id}>
                             <div className="row"> {comment.comment} </div>
-                            <div className="row"> --&nbsp;{comment.author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date))) } * </div>
+                            <div className="row"> --&nbsp;{comment.author} {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date))) } </div>
                             
                         </li>
 
