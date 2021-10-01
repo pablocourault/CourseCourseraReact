@@ -61,7 +61,7 @@ class Contact extends Component {
                         <div className="col-12 col-sm-11 offset-sm-1">
                             <div className="btn-group" role="group">
                                 <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
-                                <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
+                                <a role="button" className="btn btn-info" href="skype"><i className="fa fa-skype"></i> Skype</a>
                                 <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                             </div>
                         </div>
@@ -79,7 +79,7 @@ class Contact extends Component {
                                         <Control.text model=".firstname" id="firstname" name="firstname"
                                             placeholder="First Name"
                                             className="form-control"
-                                            validators={{ required, minLength: minLength(3), maxLength: maxLength(16)}} />
+                                            validators={{ required, minLength: minLength(3), maxLength: maxLength(16) }} />
                                         <Errors 
                                             className="text-danger"
                                             model=".firstname"
@@ -97,7 +97,7 @@ class Contact extends Component {
                                         <Control.text model=".lastname" id="lastname" name="lastname"
                                             placeholder="Last Name"
                                             className="form-control"
-                                            validators={{ required, minLength: minLength(3), maxLength: maxLength(16)}} />
+                                            validators={{ required, minLength: minLength(3), maxLength: maxLength(16) }} />
                                         <Errors 
                                             className="text-danger"
                                             model=".lastname"
@@ -115,7 +115,7 @@ class Contact extends Component {
                                         <Control.text model=".telnum" id="telnum" name="telnum"
                                             placeholder="Tel. Number"
                                             className="form-control"
-                                            validators={{ required, minLength: minLength(8), maxLength: maxLength(16), isNumber}}  />
+                                            validators={{ required, minLength: minLength(8), maxLength: maxLength(16), isNumber }}  />
                                         <Errors 
                                             className="text-danger"
                                             model=".telnum"
@@ -134,7 +134,7 @@ class Contact extends Component {
                                         <Control.text model=".email" id="email" name="email"
                                             placeholder="Email"
                                             className="form-control"
-                                            validators={{ required, validEmail}} />
+                                            validators={{ required, validEmail }} />
                                         <Errors 
                                             className="text-danger"
                                             model=".email"
@@ -181,8 +181,6 @@ class Contact extends Component {
                             </LocalForm>
                         </div>
                     </div>
-
-
 
                 </div>
             );
