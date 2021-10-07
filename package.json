@@ -40,5 +40,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablocourault/CourseCourseraReact.git"
+  },
+  "author": "pablocourault <pablocourault@gmail.com>",
+  "license": "MIT",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "bugs": {
+    "url": "https://github.com/pablocourault/CourseCourseraReact/issues"
+  },
+  "homepage": "https://github.com/pablocourault/CourseCourseraReact#readme"
 }
