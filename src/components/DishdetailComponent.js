@@ -13,12 +13,13 @@ class CommentForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            isModalOpen: false
-            };
-
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.state = {
+            isNavOpen: false,
+            isModalOpen: false
+            };
 
         }
 
@@ -27,14 +28,15 @@ class CommentForm extends Component {
         }
 
     handleSubmit(values) {
+            this.toggleModal();
             console.log("Current Status is: " + JSON.stringify(values));
             alert("Current Status is: " + JSON.stringify(values));
+            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)
             }
 
     render() {
 
             return(
-                <React.Fragment>
                 <div className="container">
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                 <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
@@ -44,7 +46,7 @@ class CommentForm extends Component {
                         <Row className="form-group">
                             <Col md={{size: 10, offset: 1}}>
                             <Label htmlFor="rating">Rating</Label>
-                            <Control.select model=".rating" name="rating"
+                            <Control.select model=".rating" id="rating" name="rating"
                                             className="form-control">
                                                 <option>1</option>
                                                 <option>2</option>
@@ -60,13 +62,12 @@ class CommentForm extends Component {
                             <Label htmlFor="author">Your Name</Label><br></br>
                             <Control.text model=".author" 
                                           id="author" 
-                                          name="author" 
                                           placeholder="Your name" 
                                           className="form-control"
                                           validators={{ required, minLength: minLength(3), maxLength: maxLength(15) }} />
                                     <Errors 
                                             className="text-danger"
-                                            model=".firstname"
+                                            model=".author"
                                             show="touched"
                                             message={{
                                                 required: 'Required',
@@ -95,7 +96,6 @@ class CommentForm extends Component {
                 <Button outline onClick={this.toggleModal}>
                 <span className="fa fa-pencil fa-lg"></span> Submit Comment
                 </Button></div>
-                </React.Fragment>
             );
         }};
 
@@ -115,7 +115,7 @@ class CommentForm extends Component {
                )
         }
 
-    function RenderComments({comments})
+    function RenderComments({comments, addComment, dishId})
         {
             if (comments != null) 
                 {
@@ -130,7 +130,7 @@ class CommentForm extends Component {
                                 </li> );
                                 })}
                             </ul>
-                            <div><CommentForm /></div>
+                            <div><CommentForm dishId={dishId} addComment={addComment} /></div>
                         </div>
                         )
                 }
@@ -161,7 +161,11 @@ class CommentForm extends Component {
 
                              <div className="row">
                                  < RenderDish dish={props.dish} />
-                                 < RenderComments comments={props.comments} />
+                                 < RenderComments 
+                                        comments={props.comments}
+                                        addComment={props.addComment}
+                                        dishId={props.dish.id}
+                                     />
                              </div>
                          </div>
                         );
