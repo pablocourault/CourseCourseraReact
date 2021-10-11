@@ -1,7 +1,7 @@
-import React,  { Component } from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
-         Modal, ModalHeader, ModalBody, Button, Label, Row, Col } from "reactstrap";
+import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
+         Modal, ModalHeader, ModalBody, Button, Label, Row, Col } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
@@ -34,6 +34,7 @@ class CommentForm extends Component {
     render() {
 
             return(
+                <React.Fragment>
                 <div className="container">
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                 <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
@@ -94,6 +95,7 @@ class CommentForm extends Component {
                 <Button outline onClick={this.toggleModal}>
                 <span className="fa fa-pencil fa-lg"></span> Submit Comment
                 </Button></div>
+                </React.Fragment>
             );
         }};
 
