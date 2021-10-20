@@ -33,7 +33,7 @@ class CommentForm extends Component {
             this.toggleModal();
             console.log("Current Status is: " + JSON.stringify(values));
             alert("Current Status is: " + JSON.stringify(values));
-            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)
+            this.props.postComment(this.props.dishId, values.rating, values.author, values.comment)
             }
 
     render() {
@@ -117,7 +117,7 @@ class CommentForm extends Component {
                )
         }
 
-    function RenderComments({comments, addComment, dishId})
+    function RenderComments({comments, postComment, dishId})
         {
             if (comments != null) 
                 {
@@ -132,7 +132,7 @@ class CommentForm extends Component {
                                 </li> );
                                 })}
                             </ul>
-                            <div><CommentForm dishId={dishId} addComment={addComment} /></div>
+                            <div><CommentForm dishId={dishId} postComment={postComment} /></div>
                         </div>
                         )
                 }
@@ -185,7 +185,7 @@ class CommentForm extends Component {
                                  < RenderDish dish={props.dish} />
                                  < RenderComments 
                                         comments={props.comments}
-                                        addComment={props.addComment}
+                                        postComment={props.postComment}
                                         dishId={props.dish.id}
                                      />
                              </div>
